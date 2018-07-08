@@ -16,7 +16,6 @@ class Card extends React.Component {
         return (<div>Loading...</div>);
     }
 
-    console.log(this.state);
     return this.state.cards.map(card => (<article className="Card">
       <header>{card.word}</header>
       <div>{card.definition}</div>

@@ -17,9 +17,9 @@ class Card extends React.Component {
     }
 
     return this.state.cards.map(card => (<article className="Card">
-      <header>{card.word}</header>
-      <div>{card.definition}</div>
-      <a href={card.permalink}>{card.permalink}</a>
+      <header className="Card_Header">{card.word}</header>
+      <div className="Card_Definition">{card.definition}</div>
+      <div className="Card_Footer">Read more: <a href={card.permalink}>{card.permalink}</a></div>
     </article>));
   }
 }

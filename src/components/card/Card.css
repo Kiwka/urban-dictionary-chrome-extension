@@ -1,4 +1,37 @@
 .Card {
-  border: 1px solid black;
+  text-align: left;
+  background-color: white;
   display: inline-block;
+  padding: 10px;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.Card_Header {
+  color: #134FE6;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 129%;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.Card_Definition {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #2C353C;
+}
+
+.Card_Footer {
+  background-color: #EFFF00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 2em;
+  padding-right: 3em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }

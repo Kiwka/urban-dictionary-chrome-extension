@@ -6,9 +6,16 @@ import React from 'react';
 import './Card.css';
 
 class Card extends React.Component {
-  state = {
-    card: null
+  constructor(props) {
+    super(props);
+    this.nextDefinition = this.nextDefinition.bind(this);
+    this.previousDefintion = this.previousDefintion.bind(this);
   }
+
+  state = {
+    index: 0
+  }
+
   componentDidMount() {
     fetch('http://api.urbandictionary.com/v0/random')
     .then(res => res.json())
@@ -17,27 +24,44 @@ class Card extends React.Component {
       fetch(`http://api.urbandictionary.com/v0/define?term=${word}`)
     )
     .then(res => res.json())
-    .then(data => this.setState({card: data.list.shift()}));
+    .then(data => this.setState({index: 1, cards: data.list}));
 
   }
+
+  nextDefinition() {
+    this.setState(state => ({index: state.index + 1}));
+  }
+
+  previousDefintion() {
+    this.setState(state => ({index: state.index - 1}));
+  }
+
   render() {
-    const {card} = this.state;
-    if (!this.state.card) {
+    const {index, cards} = this.state;
+    if (!this.state.index) {
         return (<div>Loading...</div>);
     }
+
+    const card = cards[index - 1];
 
     return <article className="Card">
       <header className="Card_Header">{card.word}</header>
       <div className="Card_Definition">{card.definition}</div>
       <div className="Card_Example">{card.example}</div>
-      <div>
-        <div className="Card_ThumbUp">
-          {ThumbUp}<span className="Card_Thumb_Text">{card['thumbs_up']}</span>
+      <section className="Card_Controls">
+        <div>
+          <div className="Card_ThumbUp">
+            {ThumbUp}<span className="Card_Thumb_Text">{card['thumbs_up']}</span>
+          </div>
+          <div className="Card_ThumbDown">
+            {ThumbDown}<span className="Card_Thumb_Text">{card['thumbs_down']}</span>
+          </div>
         </div>
-        <div className="Card_ThumbDown">
-          {ThumbDown}<span className="Card_Thumb_Text">{card['thumbs_down']}</span>
+        <div>
+          {(index - 1) > 0 ? <button className="Card_IndexUp" onClick={this.previousDefintion}></button>: null}
+          {(cards.length - index) > 0 ? <button className="Card_IndexDown" onClick={this.nextDefinition}></button> : null}
         </div>
-      </div>
+      </section>
       <div className="Card_Footer"><strong>Read more:&nbsp;</strong><a href={card.permalink}>{card.permalink}</a></div>
     </article>;
   }

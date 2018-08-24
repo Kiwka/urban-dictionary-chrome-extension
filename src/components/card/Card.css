@@ -33,6 +33,11 @@
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 }
 
+.Card_Controls {
+  display: flex;
+  justify-content: space-between;
+}
+
 .Card_ThumbUp,
 .Card_ThumbDown {
   display: inline-block;
@@ -56,6 +61,33 @@
   margin: 0 5px;
   display: inline-block;
   vertical-align: middle;
+}
+
+.Card_IndexChange {
+
+}
+
+.Card_IndexUp {
+  margin-right: 10px;
+  width: 0;
+  height: 0;
+  border: none;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 15px solid #2C353C;
+  padding: 0;
+  cursor: pointer;
+}
+
+.Card_IndexDown {
+  border: none;
+  padding: 0;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 15px solid #2C353C;
+  cursor: pointer;
 }
 
 .Card_Footer {

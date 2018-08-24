@@ -1,5 +1,5 @@
 .Search_Holder {
-  display: inline-block;
+  display: flex;
   width: 50%;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   margin-bottom: 10px;

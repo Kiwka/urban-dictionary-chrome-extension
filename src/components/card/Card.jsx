@@ -13,7 +13,9 @@ class Card extends React.Component {
   }
 
   state = {
-    index: 0
+    index: 0,
+    cards: [],
+    noResult: false,
   }
 
   componentDidMount() {
@@ -26,6 +28,15 @@ class Card extends React.Component {
     .then(res => res.json())
     .then(data => this.setState({index: 1, cards: data.list}));
 
+  }
+
+  componentDidUpdate(prevProps) {
+    const {term} = this.props;
+    if (this.props.term !== prevProps.term) {
+      fetch(`http://api.urbandictionary.com/v0/define?term=${term}`)
+      .then(res => res.json())
+      .then(data => this.setState(data.list.length ? {index: 1, cards: data.list} : {noResult: true}));
+    }
   }
 
   nextDefinition() {

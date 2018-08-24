@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
+  "short_name": "Urban Dictionary Helper",
   "name": "Urban Dictionary Random Word Chrome Extension",
   "manifest_version": 2,
   "version": "1.0",
-  "description": "Learn English better",
+  "description": "Learn real English",
   "chrome_url_overrides": {
     "newtab": "index.html"
   }

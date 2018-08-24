@@ -12,6 +12,7 @@ class Card extends React.Component {
     this.nextDefinition = this.nextDefinition.bind(this);
     this.previousDefintion = this.previousDefintion.bind(this);
     this.showRandom = this.showRandom.bind(this);
+    this.nextWord = this.nextWord.bind(this);
   }
 
   state = {
@@ -21,15 +22,7 @@ class Card extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://api.urbandictionary.com/v0/random')
-    .then(res => res.json())
-    .then(data => data.list.pop())
-    .then(({word}) =>
-      fetch(`http://api.urbandictionary.com/v0/define?term=${word}`)
-    )
-    .then(res => res.json())
-    .then(data => this.setState({index: 1, cards: data.list}));
-
+    this.nextWord();
   }
 
   componentDidUpdate(prevProps) {
@@ -55,6 +48,17 @@ class Card extends React.Component {
     })
   }
 
+  nextWord() {
+    fetch('http://api.urbandictionary.com/v0/random')
+    .then(res => res.json())
+    .then(data => data.list.pop())
+    .then(({word}) =>
+      fetch(`http://api.urbandictionary.com/v0/define?term=${word}`)
+    )
+    .then(res => res.json())
+    .then(data => this.setState({index: 1, cards: data.list}));
+  }
+
   render() {
     const {index, cards, noResult} = this.state;
     const {term} = this.props;
@@ -69,30 +73,33 @@ class Card extends React.Component {
 
     const card = cards[index - 1];
 
-    return <article className="Card">
-      <header className="Card_Header">{card.word}</header>
-      <div className="Card_Definition" dangerouslySetInnerHTML={{__html:replaceLinks(card.definition)}}></div>
-      <div className="Card_Example" dangerouslySetInnerHTML={{__html:replaceLinks(card.example)}}></div>
-      <section className="Card_Controls">
-        <div>
-          <div className="Card_ThumbUp">
-            {ThumbUp}<span className="Card_Thumb_Text">{card['thumbs_up']}</span>
+    return [
+      <article className="Card">
+        <header className="Card_Header">{card.word}</header>
+        <div className="Card_Definition" dangerouslySetInnerHTML={{__html:replaceLinks(card.definition)}}></div>
+        <div className="Card_Example" dangerouslySetInnerHTML={{__html:replaceLinks(card.example)}}></div>
+        <section className="Card_Controls">
+          <div>
+            <div className="Card_ThumbUp">
+              {ThumbUp}<span className="Card_Thumb_Text">{card['thumbs_up']}</span>
+            </div>
+            <div className="Card_ThumbDown">
+              {ThumbDown}<span className="Card_Thumb_Text">{card['thumbs_down']}</span>
+            </div>
           </div>
-          <div className="Card_ThumbDown">
-            {ThumbDown}<span className="Card_Thumb_Text">{card['thumbs_down']}</span>
+          <div>
+            {(index - 1) > 0 ? <button className="Card_IndexUp" onClick={this.previousDefintion}></button>: null}
+            {(cards.length - index) > 0 ? <button className="Card_IndexDown" onClick={this.nextDefinition}></button> : null}
           </div>
-        </div>
-        <div>
-          {(index - 1) > 0 ? <button className="Card_IndexUp" onClick={this.previousDefintion}></button>: null}
-          {(cards.length - index) > 0 ? <button className="Card_IndexDown" onClick={this.nextDefinition}></button> : null}
-        </div>
-      </section>
-      <div className="Card_Footer"><strong>Read more:&nbsp;</strong><a href={card.permalink}>{card.permalink}</a></div>
-    </article>;
+        </section>
+        <div className="Card_Footer"><strong>Read more:&nbsp;</strong><a href={card.permalink}>{card.permalink}</a></div>
+      </article>,
+      <button className="Card_More" onClick={this.nextWord}>One more word</button>
+   ];
   }
 }
 
-const replaceLinks = (text) => text.replace(/\[([a-zA-Z]|\s)+\]/g, item =>  {
+const replaceLinks = (text) => text.replace(/\[([a-zA-Z0-9]|\s|\_|\-|\/)+\]/g, item =>  {
   const term = item.substring(1, item.length-1);
   return `<a href="https://www.urbandictionary.com/define.php?term=${term}">${term}</a>`;
 });

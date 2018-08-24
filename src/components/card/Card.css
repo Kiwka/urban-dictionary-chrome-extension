@@ -33,6 +33,12 @@
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 }
 
+.Card_Definition a,
+.Card_Example a {
+  color: #134FE6;
+  font-weight: bold;
+}
+
 .Card_Controls {
   display: flex;
   justify-content: space-between;

@@ -1,6 +1,7 @@
 // Word of the day http://api.urbandictionary.com/v0/words_of_the_day
 // http://api.urbandictionary.com/v0/define?defid=${defid}http://api.urbandictionary.com/v0/define?defid=${defid}
 // http://api.urbandictionary.com/v0/define?term=${word}
+// https://www.urbandictionary.com/define.php?term=Noman
 
 import React from 'react';
 import './Card.css';
@@ -70,8 +71,8 @@ class Card extends React.Component {
 
     return <article className="Card">
       <header className="Card_Header">{card.word}</header>
-      <div className="Card_Definition">{card.definition}</div>
-      <div className="Card_Example">{card.example}</div>
+      <div className="Card_Definition" dangerouslySetInnerHTML={{__html:replaceLinks(card.definition)}}></div>
+      <div className="Card_Example" dangerouslySetInnerHTML={{__html:replaceLinks(card.example)}}></div>
       <section className="Card_Controls">
         <div>
           <div className="Card_ThumbUp">
@@ -90,6 +91,11 @@ class Card extends React.Component {
     </article>;
   }
 }
+
+const replaceLinks = (text) => text.replace(/\[([a-zA-Z]|\s)+\]/g, item =>  {
+  const term = item.substring(1, item.length-1);
+  return `<a href="https://www.urbandictionary.com/define.php?term=${term}">${term}</a>`;
+});
 
 const ThumbUp = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34"><path d="M34 15.3c0-1.9-1.4-3.4-3.1-3.4h-9.7l1.5-7.8v-.5c0-.7-.3-1.4-.6-1.9L20.4 0 10.2 11.2c-.6.5-.9 1.4-.9 2.4v17c0 1.9 1.4 3.4 3.1 3.4h13.9c1.2 0 2.3-.8 2.8-2l4.6-12.1c.2-.3.2-.9.2-1.2v-3.4h.1c0 .2 0 0 0 0zM0 34h6.2V13.6H0V34z"></path></svg>;
 

@@ -26,6 +26,31 @@
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 }
 
+.Card_ThumbUp,
+.Card_ThumbDown {
+  display: inline-block;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 0.8125rem;
+  margin-bottom: 10px;
+}
+
+.Card_ThumbDown {
+  margin-left: 15px;
+}
+
+.Card_ThumbUp svg,
+.Card_ThumbDown svg {
+  width: 15px;
+  vertical-align: middle;
+}
+
+.Card_Thumb_Text {
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .Card_Footer {
   background-color: #EFFF00;
   text-align: 'right';

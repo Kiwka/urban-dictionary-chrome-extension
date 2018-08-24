@@ -1,8 +1,8 @@
 {
   "short_name": "Urban Dictionary Helper",
   "name": "Urban Dictionary Random Word Chrome Extension",
-  "manifest_version": 2,
-  "version": "1.0",
+  "manifest_version": 1,
+  "version": "0.0.0.1",
   "description": "Learn real English",
   "chrome_url_overrides": {
     "newtab": "index.html"

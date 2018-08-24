@@ -8,7 +8,13 @@ class Card extends React.Component {
   componentDidMount() {
     fetch('http://api.urbandictionary.com/v0/random')
     .then(res => res.json())
+    .then(data => data.list.pop().word)
+    .then(word =>
+      fetch(`http://api.urbandictionary.com/v0/define?term=${word}`)
+    )
+    .then(res => res.json())
     .then(data => this.setState({card: data.list.pop()}));
+
   }
   render() {
     const {card} = this.state;

@@ -1,0 +1,24 @@
+.Search_Holder {
+  display: inline-block;
+  width: 50%;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+.Search_Input {
+  width: calc(100% - 70px);
+  height: 30px;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Search_Button {
+  width: 70px;
+  display: inline-block;
+  border: none;
+  background: #134FE6;
+  color: white;
+  height: 30px;
+  font-size: 14px;
+}

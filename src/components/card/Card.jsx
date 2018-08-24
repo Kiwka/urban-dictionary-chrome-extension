@@ -29,6 +29,7 @@ class Card extends React.Component {
     return <article className="Card">
       <header className="Card_Header">{card.word}</header>
       <div className="Card_Definition">{card.definition}</div>
+      <div className="Card_Example">{card.example}</div>
       <div>
         <div className="Card_ThumbUp">
           {ThumbUp}<span className="Card_Thumb_Text">{card['thumbs_up']}</span>

@@ -63,7 +63,7 @@ class Card extends React.Component {
 
     if (noResult) {
       return <div className="NoResult">There is no explanation for term <span className="NoResult_Term">{term}</span>. Do you want to
-         <button className="NoResult_Button" onClick={this.showRandom}>go back to random word</button>?</div>
+         <button className="NoResult_Button" onClick={this.showRandom}>go back to last word</button>?</div>
     }
 
     const card = cards[index - 1];

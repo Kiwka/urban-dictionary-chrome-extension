@@ -10,6 +10,7 @@ class Card extends React.Component {
     super(props);
     this.nextDefinition = this.nextDefinition.bind(this);
     this.previousDefintion = this.previousDefintion.bind(this);
+    this.showRandom = this.showRandom.bind(this);
   }
 
   state = {
@@ -47,10 +48,22 @@ class Card extends React.Component {
     this.setState(state => ({index: state.index - 1}));
   }
 
+  showRandom() {
+    this.setState({
+      noResult: false,
+    })
+  }
+
   render() {
-    const {index, cards} = this.state;
-    if (!this.state.index) {
+    const {index, cards, noResult} = this.state;
+    const {term} = this.props;
+    if (!index) {
         return (<div>Loading...</div>);
+    }
+
+    if (noResult) {
+      return <div className="NoResult">There is no explanation for term <span className="NoResult_Term">{term}</span>. Do you want to
+         <button className="NoResult_Button" onClick={this.showRandom}>go back to random word</button>?</div>
     }
 
     const card = cards[index - 1];

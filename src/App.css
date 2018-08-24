@@ -2,11 +2,18 @@ body {
   background-color: #EEEEEE;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #134FE6;
+}
+
 .App {
   height: 100vh;
   grid-gap: 10px;
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-items: center;
 }

@@ -6,6 +6,7 @@
   position: relative;
   padding-bottom: 40px;
   margin: 0 auto;
+  width: 50%;
 }
 
 .Card_Header {
@@ -15,24 +16,28 @@
   line-height: 129%;
   text-decoration: none;
   vertical-align: middle;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .Card_Definition {
   margin-top: 1em;
   margin-bottom: 1em;
   color: #2C353C;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 }
 
 .Card_Footer {
   background-color: #EFFF00;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: 'right';
   margin-left: 0px;
   margin-right: 0px;
   padding-left: 2em;
   padding-right: 3em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
 }

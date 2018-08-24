@@ -19,7 +19,7 @@ class Card extends React.Component {
     return <article className="Card">
       <header className="Card_Header">{card.word}</header>
       <div className="Card_Definition">{card.definition}</div>
-      <div className="Card_Footer">Read more: <a href={card.permalink}>{card.permalink}</a></div>
+      <div className="Card_Footer"><strong>Read more:&nbsp;</strong><a href={card.permalink}>{card.permalink}</a></div>
     </article>;
   }
 }

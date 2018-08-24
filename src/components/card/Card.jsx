@@ -99,7 +99,7 @@ class Card extends React.Component {
   }
 }
 
-const replaceLinks = (text) => text.replace(/\[([a-zA-Z0-9]|\s|\_|\-|\/)+\]/g, item =>  {
+const replaceLinks = (text) => text.replace(/\[([a-zA-Z0-9]|\s|\_|\-|\/|\')+\]/g, item =>  {
   const term = item.substring(1, item.length-1);
   return `<a href="https://www.urbandictionary.com/define.php?term=${term}">${term}</a>`;
 });

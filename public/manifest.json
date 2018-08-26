@@ -1,9 +1,13 @@
 {
   "short_name": "Urban Dictionary Helper",
   "name": "Urban Dictionary random word and search",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "version": "0.0.0.1",
-  "description": "Learn real English",
+  "description": "Change home screen in the Chrome to dashboard directly connected to Urban Dictionary.
+    See random word or idiom from it every time you are opening a new tab
+    or use search in the dictionary without the need to go the dictionary",
+  "default_locale": "en",
+  "author": "Olena Sovyn",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
